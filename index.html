@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Kích thước khổ A4 mô phỏng */
+        .cv-container {
+            width: 210mm;
+            min-height: 297mm;
+            background: #fff;
+            display: flex;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Cột bên trái */
+        .left-col {
+            width: 25%;
+            background-color: #f9f9f9;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border-right: 1px solid #eee;
+        }
+
+        .logo-box {
+            width: 70px;
+            height: 70px;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo-box span {
+            color: #fff;
+            font-size: 40px;
+            font-weight: 700;
+        }
+
+        .name-title {
+            color: #00b0ff;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-size: 12px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* Cột bên phải */
+        .right-col {
+            width: 75%;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Văn bản chung */
+        p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #333;
+            margin: 0 0 10px 0;
+        }
+
+        /* Kỹ năng 2 cột */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px 20px;
+            font-size: 13px;
+        }
+        .skills-grid ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skills-grid li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 5px;
+        }
+        .skills-grid li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        /* Kinh nghiệm */
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .exp-detail {
+            font-size: 13px;
+            color: #555;
+            margin-top: 2px;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .exp-bullets li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+        }
+        .exp-bullets li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+        
+        .vietnamese-item {
+            font-style: italic;
+            color: #444;
+        }
+
+        /* In ấn để loại bỏ màu nền trang web khi in PDF */
+        @media print {
+            body {
+                background-color: #fff;
+            }
+            .cv-container {
+                box-shadow: none;
+                width: 100%;
+                min-height: 100vh;
+                border-radius: 0;
+            }
+            .left-col {
+                background-color: #f9f9f9; /* In màu nền nhạt */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .logo-box {
+                background-color: #000;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    <!-- Cột Trái -->
+    <div class="left-col">
+        <div class="logo-box">
+            <span>L</span>
+        </div>
+        
+        <div class="name-title">
+            Lâm<br>Quang<br>Vinh
+        </div>
+
+        <div class="contact-info">
+            0973940013<br>
+            lqvinh.hsu@gmail.c<br>om<br><br>
+            Ho Chi Minh City,<br>
+            SG 70000
+        </div>
+    </div>
+
+    <!-- Cột Phải -->
+    <div class="right-col">
+        
+        <div class="section">
+            <div class="section-title">Summary</div>
+            <p>Ten years of .NET development with a focus on large-scale systems for Japanese clients. Expertise includes backend API and frontend development, performance optimization, and CI/CD processes using Jenkins. Strong in feature development, bug fixing, and effective client communication.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Skills</div>
+            <div class="skills-grid">
+                <ul>
+                    <li>C#</li>
+                    <li>ASP.NET MVC/Core</li>
+                    <li>Web API</li>
+                    <li>RESTful API</li>
+                    <li>Backend development</li>
+                    <li>Database design</li>
+                    <li>SQL Server</li>
+                    <li>JavaScript</li>
+                    <li>Requirement analysis</li>
+                    <li>React integration</li>
+                    <li>HTML5</li>
+                </ul>
+                <ul>
+                    <li>CSS3</li>
+                    <li>JQuery</li>
+                    <li>Git</li>
+                    <li>CI/CD (Jenkins)</li>
+                    <li>Docker containers</li>
+                    <li>Software optimization</li>
+                    <li>Technical documentation</li>
+                    <li>Client communication</li>
+                    <li>SOLID principles</li>
+                    <li>Docker containers</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Experience</div>
+            <div class="exp-header">
+                <span>.NET Developer</span>
+            </div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 2px;">
+                Ho Chi Minh City, Ho Chi Minh City<br>
+                K&G technology | Jul 2016 to Jun 2026
+            </div>
+            
+            <ul class="exp-bullets">
+                <li class="vietnamese-item">10 năm phát triển phần mềm cho khách hàng Nhật Bản.</li>
+                <li>Developed backend APIs and frontend interfaces, enhancing client application functionality.</li>
+                <li>Developed system features to improve user experience and system efficiency.</li>
+                <li>Troubleshot and optimized system performance, ensuring high reliability and user satisfaction.</li>
+                <li>Collaborated on large-scale systems with cross-functional teams to achieve project goals.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Education</div>
+            <p style="font-weight: 700; margin-bottom: 5px;">Đại Học</p>
+            <p style="margin-bottom: 2px;">Đại Học Hoa Sen | Jan 2012</p>
+            <p style="margin-bottom: 2px;">Thành Phố Hồ Chí Minh</p>
+            <p style="margin-bottom: 10px;">Tốt nghiệp năm 2012.</p>
+            
+            <ul class="exp-bullets" style="margin-top: 0;">
+                <li class="vietnamese-item">Đang học khóa học ứng dụng AI vào doanh nghiệp tại Cybersoft</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Experience Years</div>
+            <p>10</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

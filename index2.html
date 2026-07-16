@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lam Quang Vinh - CV</title>
+    <!-- Nhúng Font chữ và FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6e9ef;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 40px;
+            box-sizing: border-box;
+        }
+
+        .cv-container {
+            width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            display: flex;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        /* === Cột Trái === */
+        .left-col {
+            width: 28%; 
+            background-color: #fafafa; 
+            padding: 50px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            border-right: 1px solid #eee;
+        }
+
+        .logo-box {
+            width: 80px;
+            height: 80px;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo-box span {
+            color: #fff;
+            font-size: 45px;
+            font-weight: 700;
+        }
+
+        /* Tên */
+        .name-title {
+            color: #00b0ff;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        /* Tiêu đề cột trái (INFO, EDUCATION) */
+        .left-section-title {
+            font-size: 17px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #111;
+            margin-bottom: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Phần thông tin dùng chung style (Info & Education) */
+        .left-item-list {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.8;
+            text-align: left;
+            width: 100%;
+            padding-left: 5px;
+            box-sizing: border-box;
+        }
+        .left-item-list .item-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .left-item-list .item-row i {
+            width: 20px;
+            margin-right: 10px;
+            color: #00b0ff; /* Màu xanh đồng bộ */
+            margin-top: 3px; /* Căn chỉnh nhẹ cho icon thẳng hàng với text */
+        }
+        .left-item-list a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* Phần Education có thêm khoảng cách giữa 2 mục */
+        .edu-block {
+            margin-top: 10px;
+        }
+
+        /* === Cột Phải === */
+        .right-col {
+            width: 72%;
+            padding: 50px 45px;
+            background-color: #fff;
+        }
+
+        .section { margin-bottom: 35px; }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #d0d0d0;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        p { font-size: 14px; line-height: 1.6; color: #333; margin: 0 0 10px 0; }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 25px;
+            font-size: 14px;
+        }
+        .skills-grid ul { list-style: none; padding: 0; margin: 0; }
+        .skills-grid li {
+            position: relative; 
+            padding-left: 15px; 
+            margin-bottom: 4px;
+        }
+        .skills-grid li::before { content: "•"; position: absolute; left: 0; color: #333; }
+
+        /* Experience */
+        .exp-header { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+        .exp-company {
+            font-size: 13px; 
+            font-weight: 600; 
+            color: #555; 
+            margin-bottom: 8px;
+        }
+
+        .exp-bullets { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6; }
+        .exp-bullets li {
+            position: relative; 
+            padding-left: 20px; 
+            margin-bottom: 4px;
+        }
+        .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: #333; }
+        
+        .vietnamese-item { font-style: normal; color: #555; font-weight: 500; }
+
+        @media print {
+            body { background-color: #fff; padding: 0; }
+            .cv-container { box-shadow: none; width: 100%; min-height: 100vh; border-radius: 0; margin: 0; }
+            .left-col { background-color: #fafafa; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .logo-box { background-color: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    <div class="left-col">
+        <div class="logo-box"><span>L</span></div>
+        
+        <div class="name-title">Lâm Quang Vinh</div>
+        
+        <div class="left-section-title">Info</div>
+        
+        <div class="left-item-list">
+            <div class="item-row">
+                <i class="fas fa-phone-alt"></i>
+                <span>0973940013</span>
+            </div>
+            <div class="item-row">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:lqvinh.hsu@gmail.com">lqvinh.hsu@gmail.com</a>
+            </div>
+            <div class="item-row">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>
+                    19/0/5s đường Bình Thới, Phường Phú Thọ<br>
+                    (Quận 11), TP. Hồ Chí Minh
+                </span>
+            </div>
+        </div>
+
+        <br/>
+        <br/>
+        <div class="left-section-title">Education</div>
+        
+        <!-- Education dùng chung style icon với Info -->
+        <div class="left-item-list">
+            <div class="item-row">
+                <i class="fas fa-graduation-cap"></i>
+                <span>
+                    <span style="font-weight: 700;">2012</span> - Tốt Nghiệp Đại Học Hoa Sen<br>
+                    Ngành Công Nghệ Thông Tin
+                </span>
+            </div>
+            <div class="item-row" style="margin-top: 15px;">
+                <i class="fas fa-laptop-code"></i>
+                <span>
+                    <span style="font-weight: 700;">Hiện tại</span> - Đang học khóa học ứng dụng AI<br>
+                    trong doanh nghiệp tại Cybersoft
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="section">
+            <div class="section-title">Summary</div>
+            <p>Ten years of .NET development with a focus on large-scale systems for Japanese clients. Expertise includes backend API and frontend development, performance optimization, and CI/CD processes using Jenkins. Strong in feature development, bug fixing, and effective client communication.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Skills</div>
+            <div class="skills-grid">
+                <ul>
+                    <li>C#</li>
+                    <li>ASP.NET MVC/Core</li>
+                    <li>Web API</li>
+                    <li>RESTful API</li>
+                    <li>Backend development</li>
+                    <li>Database design</li>
+                    <li>SQL Server</li>
+                    <li>JavaScript</li>
+                    <li>Requirement analysis</li>
+                    <li>React integration</li>
+                    <li>HTML5</li>
+                </ul>
+                <ul>
+                    <li>CSS3</li>
+                    <li>JQuery</li>
+                    <li>Git</li>
+                    <li>CI/CD (Jenkins)</li>
+                    <li>Docker containers</li>
+                    <li>Software optimization</li>
+                    <li>Technical documentation</li>
+                    <li>Client communication</li>
+                    <li>SOLID principles</li>
+                    <li>Docker containers</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Experience</div>
+            
+            <!-- FPT -->
+            <div class="exp-header">Embedded Software Engineer (C/C++, C# Backend)</div>
+            <div class="exp-company">
+                FPT Software, Ho Chi Minh City<br>
+                2012 - 2016
+            </div>
+            
+            <ul class="exp-bullets">
+                <li>Developed embedded systems using <strong>C and C++</strong>.</li>
+                <li>Built backend services and APIs using <strong>C#</strong> and <strong>SQL Server</strong>.</li>
+                <li>Integrated software modules, optimized performance, and ensured system stability.</li>
+            </ul>
+
+            <br>
+
+            <!-- K&G -->
+            <div class="exp-header">.NET Developer</div>
+            <div class="exp-company">
+                K&G technology | Jul 2016 to Jun 2026
+            </div>
+            
+            <ul class="exp-bullets">
+                <li class="vietnamese-item">10 years of software development for Japanese clients.</li>
+                <li>Developed backend APIs and frontend interfaces, enhancing client application functionality.</li>
+                <li>Developed system features to improve user experience and system efficiency.</li>
+                <li>Troubleshot and optimized system performance, ensuring high reliability and user satisfaction.</li>
+                <li>Collaborated on large-scale systems with cross-functional teams to achieve project goals.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Experience Years</div>
+            <p style="font-size: 16px; font-weight: 500;">14</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
