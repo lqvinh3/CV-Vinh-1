@@ -1,0 +1,185 @@
+ body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6e9ef;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+
+        .lang-toggle-container {
+            width: 210mm;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+        .btn-lang {
+            background: #00b0ff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .btn-lang:hover { background: #008ecb; }
+
+        .cv-container {
+            width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            display: flex;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        /* === Cột Trái === */
+        .left-col {
+            width: 28%; 
+            background-color: #fafafa; 
+            padding: 50px 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            border-right: 1px solid #eee;
+        }
+
+        .logo-box {
+            width: 80px;
+            height: 80px;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .logo-box span { color: #fff; font-size: 45px; font-weight: 700; }
+
+        .name-title {
+            color: #00b0ff;
+            font-size: 26px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .left-section-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #111;
+            margin-bottom: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .left-item-list {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.8;
+            text-align: left;
+            width: 100%;
+            padding-left: 5px;
+            box-sizing: border-box;
+        }
+        .left-item-list .item-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        .left-item-list .item-row i {
+            width: 20px;
+            margin-right: 10px;
+            color: #00b0ff;
+            margin-top: 3px;
+        }
+
+        /* === Quản lý ngôn ngữ === */
+        .lang-vi { display: none; } /* Mặc định ẩn tiếng Việt */
+        .lang-en { display: block; } /* Mặc định hiện tiếng Anh */
+
+        /* === Cột Phải === */
+        .right-col {
+            width: 72%;
+            padding: 50px 45px;
+            background-color: #fff;
+        }
+
+        .section { margin-bottom: 27px; }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #d0d0d0;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        p { font-size: 14px; line-height: 1.6; color: #333; margin: 0 0 10px 0; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 25px;
+            font-size: 14px;
+        }
+        .skills-grid ul { list-style: none; padding: 0; margin: 0; }
+        .skills-grid li {
+            position: relative; 
+            padding-left: 15px; 
+            margin-bottom: 4px;
+        }
+        .skills-grid li::before { content: "•"; position: absolute; left: 0; color: #333; }
+
+        /* === UPDATE LỚN: Sửa lại Style Experience === */
+        .exp-block {
+            margin-bottom: 25px; /* Khoảng cách giữa 2 công ty */
+        }
+        
+        /* Tên công ty + Thời gian (In đậm, đặt lên trước) */
+        .exp-company-header {
+            font-size: 15px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 3px;
+        }
+        
+        /* Vị trí công việc (đặt dưới công ty, cỡ chữ nhỏ hơn, màu xám) */
+        .exp-position {
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .exp-bullets { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6; }
+        .exp-bullets li {
+            position: relative; 
+            padding-left: 20px; 
+            margin-bottom: 4px;
+        }
+        .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: #333; }
+
+        .dn {
+            display: none !important;
+        }
+
+        @media print {
+            body { background-color: #fff; padding: 0; }
+            .lang-toggle-container { display: none; }
+            .cv-container { box-shadow: none; width: 100%; min-height: 100vh; border-radius: 0; margin: 0; }
+            .left-col { background-color: #fafafa; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .logo-box { background-color: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
