@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lam Quang Vinh - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Nút chuyển đổi ngôn ngữ -->
+    <div class="lang-toggle-container">
+        <button class="btn-lang" id="toggleLangBtn" onclick="toggleLanguage()">Chuyển tiếng Việt</button>
+        <button class="btn-lang" onclick="goToCoverLetter(event)">Xem Cover Letter</button>
+    </div>
+
+    <div class="cv-container">
+        <div class="cv-header">
+            <h1>CURRICULUM VITAE</h1>
+        </div>
+
+        <div class="cv-body">
+            <div class="left-col">
+                <!-- <div class="logo-box"><span>L</span></div> -->
+
+                <div class="name-title">Lâm Quang Vinh</div>
+
+                <!-- INFO -->
+                <div class="left-section-title">
+                    <span class="lang-en">Info</span>
+                    <span class="lang-vi">Thông tin</span>
+                </div>
+
+                <div class="left-item-list">
+                    <div class="item-row">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>0973.940013</span>
+                    </div>
+                    <div class="item-row">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:lqvinh.hsu@gmail.com">lqvinh.hsu@gmail.com</a>
+                    </div>
+                    <div class="item-row">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span class="lang-en">
+                            19/40/5s Binh Thoi street, Phu Tho Ward (District 11)<br> Ho Chi Minh City
+                        </span>
+                        <span class="lang-vi">
+                            19/40/5s đường Bình Thới, Phường Phú Thọ<br>
+                            (Quận 11), TP. Hồ Chí Minh
+                        </span>
+                    </div>
+                </div>
+
+                <!-- EDUCATION -->
+                <br />
+                <div class="left-section-title">
+                    <span class="lang-en">Education</span>
+                    <span class="lang-vi">Học vấn</span>
+                </div>
+
+                <div class="left-item-list">
+                    <div class="item-row">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>
+                            <span class="lang-en"><strong>2012</strong> - Graduated from Hoa Sen University<br>Major:
+                                Information Technology</span>
+                            <span class="lang-vi"><strong>2012</strong> - Tốt Nghiệp Đại Học Hoa Sen<br>Ngành Công Nghệ
+                                Thông Tin</span>
+                        </span>
+                    </div>
+                    <div class="item-row" style="margin-top: 15px;">
+                        <i class="fas fa-certificate"></i>
+                        <span>
+                            <span class="lang-en"><strong>2012</strong> - FPT Fresher Course<br>Ranked 2nd overall in
+                                class</span>
+                            <span class="lang-vi"><strong>2012</strong> - Khóa học lớp fresher của FPT<br>Đứng hạng Nhì
+                                toàn
+                                lớp</span>
+                        </span>
+                    </div>
+                    <div class="item-row" style="margin-top: 15px;">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>
+                            <span class="lang-en"><strong>Currently</strong> - Taking an AI application course<br>in
+                                business at Cybersoft</span>
+                            <span class="lang-vi"><strong>Hiện tại</strong> - Đang học khóa học ứng dụng AI<br>trong
+                                doanh
+                                nghiệp tại Cybersoft</span>
+                        </span>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="right-col">
+
+                <!-- SUMMARY -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="lang-en">Summary</span>
+                        <span class="lang-vi">Tóm tắt</span>
+                    </div>
+                    <p class="lang-en">Fourteen years of .NET development focusing on large-scale systems for Japanese
+                        clients. Expertise includes Backend API and Frontend development, optimizing system performance.
+                        Strong in feature development, bug fixing, and effective client communication.</p>
+                    <p class="lang-vi">Với mười bốn năm phát triển .NET tập trung vào các hệ thống quy mô lớn cho khách
+                        hàng
+                        Nhật Bản. Chuyên môn bao gồm phát triển Backend API và Frontend, tối ưu hóa hiệu suất các hệ
+                        thống.
+                        Mạnh về phát triển tính năng, sửa
+                        lỗi và giao tiếp hiệu quả với khách hàng.
+                    </p>
+                </div>
+
+                <!-- SKILLS -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="lang-en">Skills</span>
+                        <span class="lang-vi">Kỹ năng</span>
+                    </div>
+                    <div class="skills-grid">
+                        <ul>
+                            <li>C#, ASP.NET MVC/Core, Entity Framework, LINQ</li>
+                            <li>SOLID principles</li>
+                            <li class="lang-en">Requirement analysis</li>
+                            <li class="lang-vi">Phân tích yêu cầu</li>
+                            <li>SQL Server, MySQL</li>
+                            <li>Web API, Microservice, RESTful API</li>
+
+                            <li class="lang-en">Writing technical documentation</li>
+                            <li class="lang-vi">Viết tài liệu kỹ thuật</li>
+
+                            <li class="lang-en">Software optimization</li>
+                            <li class="lang-vi">Tối ưu phần mềm</li>
+
+
+                            <li class="lang-en">A.I - Model Application for Enterprise in Python - Node.js (RAG,
+                                GRAPH-RAG,
+                                SQL-Agent).</li>
+                            <li class="lang-vi">A.I - ứng dụng Model cho Doanh Nghiệp Python - Nodejs (RAG, GRAPH-RAG,
+                                SQL-Agent) </li>
+
+                        </ul>
+                        <ul>
+                            <li class="lang-en dn">Database design</li>
+                            <li class="lang-vi dn">Thiết kế CSDL</li>
+
+                            <li class="lang-en">Backend development</li>
+                            <li class="lang-vi">Phát triển Backend</li>
+
+                            <li class="lang-en">Frontend development</li>
+                            <li class="lang-vi">Phát triển Frontend</li>
+
+                            <li>ReactJS, NodeJS</li>
+                            <li>HTML5, CSS3, JavaScript, jQuery</li>
+                            <li>Git</li>
+                            <li>CI/CD basic</li>
+                            <li>RabbitMQ - Kafka</li>
+                            <li>Docker</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- EXPERIENCE -->
+                <div class="section">
+                    <div class="section-title">
+                        <span class="lang-en">Experience</span>
+                        <span class="lang-vi">Kinh nghiệm</span>
+                    </div>
+
+                    <!-- FPT -->
+                    <div class="exp-block">
+                        <!-- Tên Công ty + Time In đậm -->
+                        <div class="exp-company-header">
+                            <span class="lang-en">FPT Software, Ho Chi Minh City (2012 - 2016)</span>
+                            <span class="lang-vi">FPT Software, TP. Hồ Chí Minh (2012 - 2016)</span>
+                        </div>
+
+                        <!-- Chức vụ -->
+                        <div class="exp-position">
+                            <span class="lang-en">Embedded Software Engineer <br /> .NET Developer (C/C++, C#
+                                Backend)</span>
+                            <span class="lang-vi">Kỹ sư phần mềm nhúng <br /> .NET Developer (C/C++, C# Backend)</span>
+                        </div>
+
+                        <ul class="exp-bullets">
+                            <li class="lang-en">Developed embedded systems using <strong>C and C++</strong>.</li>
+                            <li class="lang-vi">Phát triển hệ thống nhúng sử dụng <strong>C và C++</strong>.</li>
+
+                            <li class="lang-en">Built backend services and APIs using <strong>C#</strong> and
+                                <strong>SQL
+                                    Server</strong>.</li>
+                            <li class="lang-vi">Xây dựng dịch vụ backend và API sử dụng <strong>C#</strong> và
+                                <strong>SQL
+                                    Server</strong>.</li>
+
+                            <li class="lang-en">Integrated software modules, optimized performance, and ensured system
+                                stability.</li>
+                            <li class="lang-vi">Tích hợp các mô-đun phần mềm, tối ưu hiệu suất và đảm bảo độ ổn định hệ
+                                thống.</li>
+                        </ul>
+                    </div>
+
+                    <!-- K&G -->
+                    <div class="exp-block">
+                        <!-- Tên Công ty + Time In đậm -->
+                        <div class="exp-company-header">
+                            <span class="lang-en">K&G Technology Co., Ltd. (Jul 2016 - Jun 2026)</span>
+                            <span class="lang-vi">Công ty TNHH Công nghệ K&G (Thg 7/2016 - Thg 6/2026)</span>
+                        </div>
+
+                        <!-- Chức vụ -->
+                        <div class="exp-position">
+                            <span class="lang-en">.NET Developer</span>
+                            <span class="lang-vi">.NET Developer</span>
+                        </div>
+
+                        <ul class="exp-bullets">
+                            <li class="lang-en">10 years of developing large-scale systems for Japanese clients.</li>
+                            <li class="lang-vi">10 năm phát triển các hệ thống quy mô lớn cho khách hàng Nhật Bản.</li>
+
+                            <li class="lang-en">Developed backend APIs and frontend interfaces, enhancing client
+                                application
+                                functionality.</li>
+                            <li class="lang-vi">Phát triển Backend API và giao diện Frontend, nâng cao chức năng ứng
+                                dụng
+                                khách hàng.</li>
+
+                            <li class="lang-en">Developed system features to improve user experience and system
+                                efficiency.
+                            </li>
+                            <li class="lang-vi">Phát triển các tính năng hệ thống nhằm cải thiện trải nghiệm người dùng
+                                và
+                                hiệu quả hệ thống.</li>
+
+                            <li class="lang-en">Troubleshot and optimized system performance, ensuring high reliability
+                                and
+                                user satisfaction.</li>
+                            <li class="lang-vi">Xử lý sự cố và tối ưu hóa hiệu suất hệ thống, đảm bảo độ tin cậy cao và
+                                sự
+                                hài lòng của người dùng.</li>
+
+                            <!-- <li class="lang-en">Collaborated on large-scale systems with cross-functional teams to achieve
+                            project goals.</li>
+                        <li class="lang-vi">Phối hợp phát triển các hệ thống quy mô lớn cùng các nhóm đa chức năng để
+                            đạt mục tiêu dự án.</li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script xử lý chung -->
+    <script src="index.js"></script>
+</body>
+
+</html>
+</content>

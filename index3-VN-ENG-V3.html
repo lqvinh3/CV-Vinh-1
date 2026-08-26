@@ -16,8 +16,7 @@
     <!-- Nút chuyển đổi ngôn ngữ -->
     <div class="lang-toggle-container">
         <button class="btn-lang" id="toggleLangBtn" onclick="toggleLanguage()">Chuyển tiếng Việt</button>
-        <button class="btn-lang" onclick="event.preventDefault();window.location.href='covert-letter.html';">Xem Cover
-            Letter</button>
+        <button class="btn-lang" onclick="goToCoverLetter(event)">Xem Cover Letter</button>
     </div>
 
     <div class="cv-container">
@@ -116,36 +115,42 @@
                 </div>
                 <div class="skills-grid">
                     <ul>
-                        <li>ASP.NET MVC/Core</li>
+                        <li>C#, ASP.NET MVC/Core, Entity Framework, LINQ</li>
+                        <li>SOLID principles</li>
                         <li class="lang-en">Requirement analysis</li>
                         <li class="lang-vi">Phân tích yêu cầu</li>
-                        <li>C#</li>
-                        <li>SQL Server</li>
-                        <li>JavaScript</li>
-                        <li>NodeJS</li>
-                        <li>Web API</li>
-                        <li>RESTful API</li>
-                        <li class="lang-en">Backend development</li>
-                        <li class="lang-vi">Phát triển Backend</li>
+                        <li>SQL Server, MySQL</li>
+                        <li>Web API, Microservice, RESTful API</li>
+
                         <li class="lang-en">Writing technical documentation</li>
                         <li class="lang-vi">Viết tài liệu kỹ thuật</li>
-                        <li class="lang-en dn">Database design</li>
-                        <li class="lang-vi dn">Thiết kế CSDL</li>
 
+                        <li class="lang-en">Software optimization</li>
+                        <li class="lang-vi">Tối ưu phần mềm</li>
+
+
+                        <li class="lang-en">A.I - Model Application for Enterprise in Python - Node.js (RAG, GRAPH-RAG,
+                            SQL-Agent).</li>
+                        <li class="lang-vi">A.I - ứng dụng Model cho Doanh Nghiệp Python - Nodejs (RAG, GRAPH-RAG,
+                            SQL-Agent) </li>
 
                     </ul>
                     <ul>
-                        <li>ReactJS</li>
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>JQuery</li>
+                        <li class="lang-en dn">Database design</li>
+                        <li class="lang-vi dn">Thiết kế CSDL</li>
+
+                        <li class="lang-en">Backend development</li>
+                        <li class="lang-vi">Phát triển Backend</li>
+
+                        <li class="lang-en">Frontend development</li>
+                        <li class="lang-vi">Phát triển Frontend</li>
+
+                        <li>ReactJS, NodeJS</li>
+                        <li>HTML5, CSS3, JavaScript, jQuery</li>
                         <li>Git</li>
-                        <li>CI/CD (Jenkins)</li>
-                        <li>Docker containers</li>
-                        <li class="lang-en">Software optimization</li>
-                        <li class="lang-vi">Tối ưu phần mềm</li>
-                        <li>SOLID principles</li>
-                        <li>Docker containers</li>
+                        <li>CI/CD basic</li>
+                        <li>RabbitMQ - Kafka</li>
+                        <li>Docker</li>
                     </ul>
                 </div>
             </div>
@@ -231,27 +236,8 @@
         </div>
     </div>
 
-    <!-- Script chuyển đổi ngôn ngữ -->
-    <script>
-        function toggleLanguage() {
-            const enEls = document.querySelectorAll('.lang-en');
-            const viEls = document.querySelectorAll('.lang-vi');
-            const btn = document.getElementById('toggleLangBtn');
-
-            const isEnVisible = enEls[0].style.display !== 'none' && enEls[0].style.display !== '';
-
-            if (isEnVisible) {
-                enEls.forEach(el => el.style.display = 'none');
-                viEls.forEach(el => el.style.display = 'block');
-                btn.innerText = 'Chuyển tiếng Anh';
-            } else {
-                enEls.forEach(el => el.style.display = 'block');
-                viEls.forEach(el => el.style.display = 'none');
-                btn.innerText = 'Chuyển tiếng Việt';
-            }
-        }
-    </script>
-
+    <!-- Script xử lý chung -->
+    <script src="index.js"></script>
 </body>
 
 </html>

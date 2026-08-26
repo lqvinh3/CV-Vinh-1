@@ -363,30 +363,7 @@
     </div>
 </div>
 
-<!-- Script chuyển đổi ngôn ngữ -->
-<script>
-    function toggleLanguage() {
-        // Lấy tất cả các phần tử tiếng Anh và tiếng Việt
-        const enEls = document.querySelectorAll('.lang-en');
-        const viEls = document.querySelectorAll('.lang-vi');
-        const btn = document.getElementById('toggleLangBtn');
-
-        // Kiểm tra trạng thái hiện tại (nếu tiếng Anh đang hiện thì ẩn nó đi và hiện tiếng Việt)
-        const isEnVisible = enEls[0].style.display !== 'none' && enEls[0].style.display !== ''; 
-
-        if (isEnVisible) {
-            // Chuyển sang tiếng Việt
-            enEls.forEach(el => el.style.display = 'none');
-            viEls.forEach(el => el.style.display = 'block');
-            btn.innerText = 'Chuyển tiếng Anh';
-        } else {
-            // Chuyển sang tiếng Anh
-            enEls.forEach(el => el.style.display = 'block');
-            viEls.forEach(el => el.style.display = 'none');
-            btn.innerText = 'Chuyển tiếng Việt';
-        }
-    }
-</script>
-
+<!-- Script xử lý chung -->
+<script src="index.js"></script>
 </body>
 </html>
