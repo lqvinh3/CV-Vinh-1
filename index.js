@@ -1,3 +1,7 @@
+var STATE = { current: 'en', list: ['vi', 'en'] };
+
+
+
 function toggleLanguage() {
     const enEls = document.querySelectorAll('.lang-en');
     const viEls = document.querySelectorAll('.lang-vi');
@@ -5,9 +9,11 @@ function toggleLanguage() {
 
     if (!enEls.length) return;
 
-    const isEnVisible = enEls[0].style.display !== 'none' && enEls[0].style.display !== '';
+    // const isEnVisible = enEls[0].style.display !== 'none' && enEls[0].style.display !== '';
+    STATE.current = STATE.current == 'en' ? 'vi' : 'en';
 
-    if (isEnVisible) {
+
+    if (STATE.current == 'vi') {
         enEls.forEach(el => el.style.display = 'none');
         viEls.forEach(el => el.style.display = 'block');
         if (btn) btn.innerText = 'Chuyển tiếng Anh';
@@ -44,3 +50,5 @@ window.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem('returnScrollPos');
     }
 });
+
+toggleLanguage();

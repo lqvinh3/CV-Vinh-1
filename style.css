@@ -144,11 +144,16 @@
  /* === Quản lý ngôn ngữ === */
  .lang-vi {
      display: none;
+     font-size: 16px;
+     line-height: 1.5;
  }
 
  /* Mặc định ẩn tiếng Việt */
  .lang-en {
      display: block;
+     font-size: 16px;
+     line-height: 1.5;
+
  }
 
  /* === Cột Phải === */
@@ -182,8 +187,8 @@
  .skills-grid {
      display: grid;
      grid-template-columns: 1fr 1fr;
-     gap: 8px 25px;
-     font-size: 14px;
+     gap: 8px 20px;
+
  }
 
  .skills-grid ul {
@@ -196,6 +201,9 @@
      position: relative;
      padding-left: 15px;
      margin-bottom: 4px;
+     font-size: 16px;
+     line-height: 1.5;
+
  }
 
  .skills-grid li::before {
