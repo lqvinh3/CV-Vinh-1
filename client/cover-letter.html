@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter - Lam Quang Vinh</title>
+    <!-- Font chữ Roboto phổ biến và dễ đọc nhất chuẩn quốc tế và tiếng Việt -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, 'Segoe UI', sans-serif;
+            background-color: #e6e9ef;
+            margin: 0;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .cover-letter-container {
+            width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 50px 60px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+        }
+
+        .cover-letter-title h2 {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #111;
+            margin: 0 0 28px 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        /* Chữ bự hơn, dãn dòng thoáng đãng, dễ đọc */
+        .cover-letter-text {
+            font-size: 16.5px;
+            line-height: 30px;
+            color: #262626;
+            text-align: justify;
+        }
+
+        .cover-letter-text strong {
+            color: #111;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .cover-letter-container {
+                box-shadow: none;
+                width: 100%;
+                min-height: 100vh;
+                padding: 30px 40px;
+                margin: 0;
+            }
+            .lang-toggle-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="lang-toggle-container">
+        <button class="btn-lang" onclick="goBack(event)">Quay Về trang CV</button>
+    </div>
+
+    <div class="cover-letter-container">
+        <div class="cover-letter-title">
+            <h2>COVER LETTER</h2>
+        </div>
+        <div class="cover-letter-text">
+            <strong>Kính gửi Bộ phận Tuyển dụng,</strong><br /><br />
+            Em viết thư này để bày tỏ mong muốn được ứng tuyển vào vị trí <strong>IT Developer</strong> tại Quý Công
+            ty.<br /><br />
+            Với hơn 14 năm kinh nghiệm trong lĩnh vực phát triển và bảo trì các hệ thống phần mềm quy mô lớn của Nhật,<br />
+            Em đã tích lũy được kinh nghiệm làm việc với nhiều dự án có yêu cầu cao về tính ổn định, hiệu năng và chất
+            lượng.<br />
+            Quá trình làm việc giúp Em rèn luyện khả năng giải quyết vấn đề,<br />
+            thích nghi nhanh với sự thay đổi và hoàn thành công việc hiệu quả ngay cả trong môi trường có áp lực
+            cao.<br />
+            Bên cạnh kinh nghiệm chuyên môn, Em luôn giữ tinh thần cầu tiến và không ngừng học hỏi.<br />
+            Em chủ động tìm hiểu các công nghệ mới, sẵn sàng tiếp cận những thách thức mới để nâng cao<br />
+            năng lực bản thân cũng như tạo ra giá trị tốt hơn cho doanh nghiệp.<br />
+            Em rất mong nhận được cơ hội trở thành một thành viên của Quý Công ty,<br />
+            nơi Em có thể đóng góp những kinh nghiệm đã tích lũy, đồng thời tiếp tục học hỏi,<br />
+            phát triển và đồng hành cùng sự phát triển của Công ty.<br />
+            Xin chân thành cảm ơn Quý Công ty đã dành thời gian xem xét hồ sơ của Em.<br />
+            Em rất mong nhận được lời mời tham gia phỏng vấn để có cơ hội trao đổi chi tiết hơn về kinh nghiệm,<br />
+            năng lực cũng như những giá trị mà Em có thể đóng góp.<br /><br />
+            Trân trọng,<br />
+            <strong>Lâm Quang Vinh</strong><br />
+            Điện thoại: 0973 94 0013<br />
+            Email: lqvinh.hsu@gmail.com
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>

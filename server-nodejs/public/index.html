@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ Thống Quản Lý CV & Xuất PDF Trọn Bộ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-file-invoice"></i>
+        </div>
+        <div class="brand-text">
+          <h1>CV MANAGER & PDF GENERATOR</h1>
+          <span class="subtext">Node.js Server • Puppeteer Headless Engine • PDF-Lib Merger</span>
+        </div>
+      </div>
+
+      <div class="server-status-pill" id="serverStatusBadge">
+        <span class="status-dot"></span>
+        <span id="statusText">Đang kết nối Server...</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Hero Banner with PDF Pipeline Visualization -->
+    <section class="pipeline-section">
+      <div class="pipeline-card">
+        <div class="pipeline-header">
+          <div class="pipeline-title">
+            <i class="fa-solid fa-layer-group"></i>
+            <h2>Cấu Trúc Hồ Sơ PDF Trọn Bộ Tự Động Ghép</h2>
+          </div>
+          <span class="pipeline-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> 3 Thành Phần Ghép</span>
+        </div>
+
+        <div class="pipeline-flow">
+          <!-- Step 1: Cover Letter -->
+          <div class="pipeline-step">
+            <div class="step-num">Trang 1</div>
+            <div class="step-icon step-blue">
+              <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+            <div class="step-info">
+              <h4>Cover Letter</h4>
+              <p>cover-letter.html</p>
+            </div>
+            <a href="/client/cover-letter.html" target="_blank" class="step-arrow-btn" title="Xem file cover-letter.html">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+
+          <div class="pipeline-arrow">
+            <i class="fa-solid fa-plus"></i>
+          </div>
+
+          <!-- Step 2: Selected CV -->
+          <div class="pipeline-step active-step">
+            <div class="step-num">Trang 2+</div>
+            <div class="step-icon step-green">
+              <i class="fa-solid fa-address-card"></i>
+            </div>
+            <div class="step-info">
+              <h4>CV Được Chọn</h4>
+              <p id="pipelineSelectedCvName">index3-VN-ENG-V5.html</p>
+            </div>
+            <button class="step-arrow-btn" id="pipelineViewCvBtn" title="Xem CV đã chọn">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </button>
+          </div>
+
+          <div class="pipeline-arrow">
+            <i class="fa-solid fa-plus"></i>
+          </div>
+
+          <!-- Step 3: Bang Cap -->
+          <div class="pipeline-step">
+            <div class="step-num">Trang Cuối</div>
+            <div class="step-icon step-purple">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="step-info">
+              <h4>Bằng Cấp Chứng Chỉ</h4>
+              <p>BANG_CAP.pdf</p>
+            </div>
+            <a href="/client/BANG_CAP.pdf" target="_blank" class="step-arrow-btn" title="Xem file BANG_CAP.pdf">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Master Actions -->
+        <div class="pipeline-action-bar">
+          <div class="lang-selector-group">
+            <label for="langSelect"><i class="fa-solid fa-language"></i> Ngôn ngữ CV:</label>
+            <div class="segmented-control">
+              <button type="button" class="segment-btn active" data-lang="vi">
+                <span>Tiếng Việt</span>
+              </button>
+              <button type="button" class="segment-btn" data-lang="en">
+                <span>English</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="action-buttons-group">
+            <button id="previewPdfBtn" class="btn btn-secondary">
+              <i class="fa-solid fa-eye"></i>
+              <span>Xem Trước PDF</span>
+            </button>
+
+            <button id="generatePdfBtn" class="btn btn-primary btn-glow">
+              <span class="btn-spinner" id="genSpinner" style="display:none;">
+                <i class="fa-solid fa-circle-notch fa-spin"></i>
+              </span>
+              <i class="fa-solid fa-file-arrow-down" id="genIcon"></i>
+              <span id="genBtnText">Tạo & Tải PDF Về Máy</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Main Workspace Layout: List of HTML files + Live Preview -->
+    <div class="workspace-grid">
+      
+      <!-- Left Column: List of HTML files in client -->
+      <section class="files-section">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fa-solid fa-folder-open"></i>
+            <h3>Danh Sách Các Trang CV Trong Thư Mục /client</h3>
+          </div>
+          <span class="counter-badge" id="fileCountBadge">0 files</span>
+        </div>
+
+        <p class="section-guide">
+          👉 <strong>Bấm vào button</strong> để <span class="text-green-highlight">tô xanh chọn làm CV</span> tạo file PDF. 
+          Bấm nút mũi tên <strong><i class="fa-solid fa-arrow-up-right-from-square"></i></strong> kế bên để mở trang HTML xem chi tiết.
+        </p>
+
+        <!-- Dynamic List of HTML Files -->
+        <div class="files-list" id="filesListContainer">
+          <div class="loading-state">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+            <span>Đang tải danh sách file từ thư mục client...</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Interactive Live Preview Pane -->
+      <section class="preview-section">
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fa-solid fa-desktop"></i>
+            <h3>Xem Trước Trực Tiếp</h3>
+            <!-- https://jobsgo.vn/viec-lam/lap-trinh-vien-coder-28893518411.html?ref_component=job_list__item -->
+            <a href="https://jobsgo.vn/viec-lam/lap-trinh-vien-coder-28893518411.html?ref_component=job_list__item" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="btn-job-link"
+               title="Xem bài tuyển dụng Lập Trình Viên Coder trên JobsGO">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              <span>link vào trang tuyển dụng</span>
+            </a>
+          </div>
+          <div class="preview-toolbar">
+            <span class="preview-filename-badge" id="previewFilenameBadge">index3-VN-ENG-V5.html</span>
+            <button id="openNewTabBtn" class="toolbar-btn" title="Mở trong tab mới">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Mở Tab Mới
+            </button>
+            <button id="refreshIframeBtn" class="toolbar-btn" title="Tải lại khung xem">
+              <i class="fa-solid fa-rotate-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="preview-frame-wrapper">
+          <iframe id="cvPreviewFrame" src="/client/index3-VN-ENG-V5.html" title="Xem trước CV"></iframe>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Modal / Floating Viewer for Generated PDF Preview -->
+  <div class="pdf-modal-backdrop" id="pdfModalBackdrop" style="display:none;">
+    <div class="pdf-modal-container">
+      <div class="pdf-modal-header">
+        <div class="modal-left-group">
+          <div class="modal-title">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Bản Xem Trước PDF (File Full Gốc)</span>
+          </div>
+          <span class="modal-page-counter" id="modalPageCounter">...</span>
+        </div>
+
+        <!-- Buttons chọn trang cần xóa khi In hoặc Tải về -->
+        <div class="page-deletion-bar" id="pageDeletionBar">
+          <!-- Sẽ tự động render các button: [Xóa Page 1] [Xóa Page 2]... -->
+        </div>
+
+        <div class="modal-actions">
+          <button id="modalResetPagesBtn" class="btn btn-secondary btn-sm" style="display:none;" title="Khôi phục lại tất cả các trang đã chọn xóa">
+            <i class="fa-solid fa-rotate-left"></i> Khôi phục
+          </button>
+          <button id="modalPrintBtn" class="btn btn-primary btn-sm" title="In trực tiếp file PDF (đã loại bỏ các trang đã chọn xóa)">
+            <i class="fa-solid fa-print"></i> In PDF
+          </button>
+          <button id="modalDownloadBtn" class="btn btn-secondary btn-sm" title="Tải file PDF về máy (đã loại bỏ các trang đã chọn xóa)">
+            <i class="fa-solid fa-download"></i> Tải Về Máy
+          </button>
+          <button id="modalCloseBtn" class="modal-close-btn" title="Đóng">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+      <div class="pdf-modal-body">
+        <div class="pdf-loading-overlay" id="pdfModalLoading">
+          <i class="fa-solid fa-circle-notch fa-spin"></i>
+          <span>Server đang tải bản Full PDF từ cache... Vui lòng đợi trong giây lát!</span>
+        </div>
+        <iframe id="pdfPreviewIframe" src="about:blank" title="Xem trước PDF Full gốc"></iframe>
+        <iframe id="pdfPrintIframe" style="display:none;" title="Frame in PDF"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
