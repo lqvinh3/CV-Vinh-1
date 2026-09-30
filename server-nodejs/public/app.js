@@ -25,6 +25,8 @@ const genSpinner = document.getElementById('genSpinner');
 const genIcon = document.getElementById('genIcon');
 const genBtnText = document.getElementById('genBtnText');
 
+const previewPdfViBtn = document.getElementById('previewPdfViBtn');
+const previewPdfEnBtn = document.getElementById('previewPdfEnBtn');
 const previewPdfBtn = document.getElementById('previewPdfBtn');
 const pdfModalBackdrop = document.getElementById('pdfModalBackdrop');
 const pdfModalLoading = document.getElementById('pdfModalLoading');
@@ -410,10 +412,21 @@ function togglePageExclusion(pageNum) {
 // ============================================================================
 // Preview PDF Modal: LUÔN XEM BẢN FULL GỐC TỪ CACHE
 // ============================================================================
-previewPdfBtn.addEventListener('click', async () => {
+async function openPdfPreview(targetLang) {
   if (!currentSelectedCv) {
     showToast('Vui lòng chọn một file CV trước!', 'error');
     return;
+  }
+
+  const langToUse = targetLang || currentLang;
+
+  // Cập nhật language selector trên UI
+  if (langToUse !== currentLang) {
+    currentLang = langToUse;
+    document.querySelectorAll('.segment-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.lang === langToUse);
+    });
+    excludedPages = [];
   }
 
   pdfModalBackdrop.style.display = 'flex';
@@ -423,7 +436,7 @@ previewPdfBtn.addEventListener('click', async () => {
 
   try {
     // 1. Lấy thông tin số trang từ API
-    const res = await fetch(`/api/pdf-info?cvFile=${encodeURIComponent(currentSelectedCv)}&lang=${currentLang}`);
+    const res = await fetch(`/api/pdf-info?cvFile=${encodeURIComponent(currentSelectedCv)}&lang=${langToUse}`);
     if (res.ok) {
       const data = await res.json();
       originalPageCount = data.originalPageCount || 0;
@@ -434,13 +447,23 @@ previewPdfBtn.addEventListener('click', async () => {
   }
 
   // 2. Luôn nạp bản FULL gốc từ Cache (không truyền excludePages)
-  const fullPreviewUrl = `/api/preview-pdf?cvFile=${encodeURIComponent(currentSelectedCv)}&lang=${currentLang}&t=${Date.now()}`;
+  const fullPreviewUrl = `/api/preview-pdf?cvFile=${encodeURIComponent(currentSelectedCv)}&lang=${langToUse}&t=${Date.now()}`;
   pdfPreviewIframe.src = fullPreviewUrl;
 
   pdfPreviewIframe.onload = () => {
     pdfModalLoading.style.display = 'none';
   };
-});
+}
+
+if (previewPdfViBtn) {
+  previewPdfViBtn.addEventListener('click', () => openPdfPreview('vi'));
+}
+if (previewPdfEnBtn) {
+  previewPdfEnBtn.addEventListener('click', () => openPdfPreview('en'));
+}
+if (previewPdfBtn) {
+  previewPdfBtn.addEventListener('click', () => openPdfPreview(currentLang));
+}
 
 // ============================================================================
 // In PDF (Print): Bấm in mới thực hiện in file PDF đã chỉnh sửa cắt bỏ các trang

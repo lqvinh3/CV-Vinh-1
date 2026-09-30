@@ -87,6 +87,11 @@
             text-decoration: underline;
         }
 
+        .lang-vi, .lang-en {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
         .cover-letter-contact {
             margin-top: 20px;
             font-family: 'Roboto', Arial, 'Segoe UI', sans-serif;
@@ -118,6 +123,7 @@
 <body>
 
     <div class="lang-toggle-container">
+        <button class="btn-lang" id="toggleLangBtn" onclick="toggleLanguage()">Chuyển tiếng Anh</button>
         <button class="btn-lang" onclick="goBack(event)">Quay Về trang CV</button>
     </div>
 
@@ -126,39 +132,80 @@
             <h2>COVER LETTER</h2>
         </div>
         <div class="cover-letter-text">
-            <p><strong>Chào anh/chị HR,</strong> Em là Lâm Quang Vinh,</p>
-            <p>Em viết thư này để bày tỏ mong muốn được ứng tuyển vào vị trí <strong>"IT Developer"</strong> tại Quý Công ty.</p>
+            <!-- PHIÊN BẢN TIẾNG VIỆT (GIỮ NGUYÊN 100%) -->
+            <div class="lang-vi">
+                <p><strong>Chào anh/chị HR,</strong> Em là Lâm Quang Vinh,</p>
+                <p>Em viết thư này để bày tỏ mong muốn được ứng tuyển vào vị trí <strong>"IT Developer"</strong> tại Quý Công ty.</p>
 
-            <p>Với hơn 10 năm kinh nghiệm phát triển, bảo trì và nâng cấp các hệ thống Web, phần mềm quy mô lớn, đặc biệt là các dự án cho khách hàng Nhật Bản, Em đã tham gia nhiều hệ thống yêu cầu cao về tính ổn định, hiệu năng và chất lượng.</p>
+                <p>Với hơn 10 năm kinh nghiệm phát triển, bảo trì và nâng cấp các hệ thống Web, phần mềm quy mô lớn, đặc biệt là các dự án cho khách hàng Nhật Bản, Em đã tham gia nhiều hệ thống yêu cầu cao về tính ổn định, hiệu năng và chất lượng.</p>
 
-            <p>Em có kinh nghiệm nâng cấp hệ thống để đáp ứng số lượng người dùng lớn, tối ưu hiệu năng và đảm bảo hệ thống vận hành ổn định. Các dự án Em từng tham gia gồm:</p>
-            <ul class="project-list">
-                <li>Hệ thống quản lý xuất nhập khẩu nguyên vật liệu của chính phủ Nhật.</li>
-                <li>Hệ thống cân xe của cơ quan chính phủ Nhật.</li>
-                <li>Phát triển một phần module của tên lửa Nhật.</li>
-                <li>Hệ thống quản lí vận hành máy móc tại các bệnh viện của Nhật (quản lí thông tin kết quả của các máy chức năng như xét nghiệm, x-quang).</li>
-                <li>Nền tảng thương mại điện tử E-commerce tại Nhật Bản (<a href="https://estore.jp/" target="_blank" rel="noopener noreferrer">https://estore.jp/</a>).</li>
-                <li>Phát triển ERP module hệ thống kế toán của (https://kng.vn/)</li>
-                <li>Tại FPT: Lập trình nhúng vào thiết bị mạng (Switch) của <a href="https://www.alaxala.com/" target="_blank" rel="noopener noreferrer">https://www.alaxala.com/</a></li>
-                <li>Tại FPT: Tham gia vào phát triển ứng dụng và tối ưu SQL quản lí cho hệ thống lái xe thông minh của Toyota.</li>
-                <li>Viết tài liệu IT (hướng dẫn cách vận hành hệ thống và test) cho mọi dự án mình tham gia.</li>
-            </ul>
+                <p>Em có kinh nghiệm nâng cấp hệ thống để đáp ứng số lượng người dùng lớn, tối ưu hiệu năng và đảm bảo hệ thống vận hành ổn định. Các dự án Em từng tham gia gồm:</p>
+                <ul class="project-list">
+                    <li>Hệ thống quản lý xuất nhập khẩu nguyên vật liệu của chính phủ Nhật.</li>
+                    <li>Hệ thống cân xe của cơ quan chính phủ Nhật.</li>
+                    <li>Phát triển một phần module của tên lửa Nhật.</li>
+                    <li>Hệ thống quản lí vận hành máy móc tại các bệnh viện của Nhật (quản lí thông tin kết quả của các máy chức năng như xét nghiệm, x-quang).</li>
+                    <li>Nền tảng thương mại điện tử E-commerce tại Nhật Bản (<a href="https://estore.jp/" target="_blank" rel="noopener noreferrer">https://estore.jp/</a>).</li>
+                    <li>Phát triển ERP module hệ thống kế toán của (https://kng.vn/)</li>
+                    <li>Tại FPT: Lập trình nhúng vào thiết bị mạng (Switch) của <a href="https://www.alaxala.com/" target="_blank" rel="noopener noreferrer">https://www.alaxala.com/</a></li>
+                    <li>Tại FPT: Tham gia vào phát triển ứng dụng và tối ưu SQL quản lí cho hệ thống lái xe thông minh của Toyota.</li>
+                    <li>Viết tài liệu IT (hướng dẫn cách vận hành hệ thống và test) cho mọi dự án mình tham gia.</li>
+                </ul>
 
-            <p>Qua quá trình làm việc, Em đã rèn luyện khả năng phân tích, giải quyết vấn đề, thích nghi nhanh và hoàn thành tốt công việc trong môi trường có yêu cầu cao.</p>
+                <p>Qua quá trình làm việc, Em đã rèn luyện khả năng phân tích, giải quyết vấn đề, thích nghi nhanh và hoàn thành tốt công việc trong môi trường có yêu cầu cao.</p>
 
-            <p>Em cũng luôn chủ động học hỏi và cập nhật các công nghệ mới để nâng cao năng lực chuyên môn. Đặc biệt trong bối cảnh AI đang phát triển rất nhanh và ngày càng được ứng dụng rộng rãi trong lĩnh vực công nghệ thông tin, Em luôn sẵn sàng tìm hiểu và áp dụng những công nghệ phù hợp nhằm nâng cao hiệu quả công việc và chất lượng sản phẩm.</p>
+                <p>Em cũng luôn chủ động học hỏi và cập nhật các công nghệ mới để nâng cao năng lực chuyên môn. Đặc biệt trong bối cảnh AI đang phát triển rất nhanh và ngày càng được ứng dụng rộng rãi trong lĩnh vực công nghệ thông tin, Em luôn sẵn sàng tìm hiểu và áp dụng những công nghệ phù hợp nhằm nâng cao hiệu quả công việc và chất lượng sản phẩm.</p>
 
-            <p>Bên cạnh đó, Em có khả năng phối hợp và giao tiếp tốt với các thành viên trong dự án như kỹ sư cầu nối, PM, Team Lead và các bộ phận liên quan, từ đó giúp công việc được trao đổi rõ ràng, xử lý vấn đề nhanh chóng và đảm bảo tiến độ chung của dự án</p>
+                <p>Bên cạnh đó, Em có khả năng phối hợp và giao tiếp tốt với các thành viên trong dự án như kỹ sư cầu nối, PM, Team Lead và các bộ phận liên quan, từ đó giúp công việc được trao đổi rõ ràng, xử lý vấn đề nhanh chóng và đảm bảo tiến độ chung của dự án</p>
 
-            <p>Em rất mong có cơ hội được gia nhập Quý Công ty, đóng góp những kinh nghiệm đã tích lũy và tiếp tục phát triển chuyên môn trong thời gian tới.</p>
+                <p>Em rất mong có cơ hội được gia nhập Quý Công ty, đóng góp những kinh nghiệm đã tích lũy và tiếp tục phát triển chuyên môn trong thời gian tới.</p>
 
-            <p>Xin chân thành cảm ơn Quý Công ty đã dành thời gian xem xét hồ sơ. Em rất mong có cơ hội tham gia phỏng vấn để trao đổi thêm về kinh nghiệm và khả năng đóng góp của mình.</p>
+                <p>Xin chân thành cảm ơn Quý Công ty đã dành thời gian xem xét hồ sơ. Em rất mong có cơ hội tham gia phỏng vấn để trao đổi thêm về kinh nghiệm và khả năng đóng góp của mình.</p>
 
-            <div class="cover-letter-contact">
-                Trân trọng,<br />
-                <strong>Lâm Quang Vinh</strong><br />
-                Điện thoại: 0973 94 0013<br />
-                Email: lqvinh.hsu@gmail.com
+                <div class="cover-letter-contact">
+                    Trân trọng,<br />
+                    <strong>Lâm Quang Vinh</strong><br />
+                    Điện thoại: 0973 94 0013<br />
+                    Email: lqvinh.hsu@gmail.com
+                </div>
+            </div>
+
+            <!-- PHIÊN BẢN TIẾNG ANH (ENGLISH TRANSLATION) -->
+            <div class="lang-en">
+                <p><strong>Dear HR Team / Hiring Manager,</strong> I am Lam Quang Vinh,</p>
+                <p>I am writing this letter to express my strong interest in applying for the <strong>"IT Developer"</strong> position at your company.</p>
+
+                <p>With over 10 years of experience in developing, maintaining, and upgrading large-scale web and software systems—particularly for Japanese clients—I have contributed to numerous mission-critical systems that demand high stability, performance, and rigorous quality standards.</p>
+
+                <p>I possess extensive experience in scaling systems for large user bases, optimizing performance, and ensuring seamless operations. Key projects I have participated in include:</p>
+                <ul class="project-list">
+                    <li>Materials import-export management system for the Japanese government.</li>
+                    <li>Vehicle weighbridge management system for Japanese government agencies.</li>
+                    <li>Subsystem module development for Japanese aerospace/rocket projects.</li>
+                    <li>Medical equipment operation and diagnostic result management system for Japanese hospitals (analyzers, X-rays).</li>
+                    <li>E-commerce platform in Japan (<a href="https://estore.jp/" target="_blank" rel="noopener noreferrer">https://estore.jp/</a>).</li>
+                    <li>ERP accounting module development for K&amp;G (<a href="https://kng.vn/" target="_blank" rel="noopener noreferrer">https://kng.vn/</a>).</li>
+                    <li>At FPT: Embedded software programming for network devices (Switch) for <a href="https://www.alaxala.com/" target="_blank" rel="noopener noreferrer">https://www.alaxala.com/</a>.</li>
+                    <li>At FPT: Contributed to application development and SQL query optimization for Toyota's smart driving system.</li>
+                    <li>Authored comprehensive IT documentation (system operation manuals and test scenarios) for all participating projects.</li>
+                </ul>
+
+                <p>Throughout my career, I have honed strong analytical thinking, problem-solving skills, and the ability to adapt swiftly and deliver high-quality results in demanding environments.</p>
+
+                <p>I consistently maintain a proactive learning mindset, keeping up with cutting-edge technologies to enhance my technical expertise. Especially with the rapid evolution and widespread adoption of AI in the IT industry, I am always eager to explore and integrate suitable AI technologies to boost work productivity and product excellence.</p>
+
+                <p>Furthermore, I excel in cross-functional communication and collaboration with project stakeholders, including Bridge Software Engineers (BrSE), PMs, Team Leads, and related teams, facilitating transparent communication, rapid issue resolution, and on-schedule project delivery.</p>
+
+                <p>I look forward to the opportunity to join your esteemed company, contribute my accumulated expertise, and further advance my professional career.</p>
+
+                <p>Thank you very much for taking the time to review my application. I look forward to an opportunity for an interview to further discuss my experience and how I can add value to your team.</p>
+
+                <div class="cover-letter-contact">
+                    Sincerely,<br />
+                    <strong>Lam Quang Vinh</strong><br />
+                    Phone: 0973 94 0013<br />
+                    Email: lqvinh.hsu@gmail.com
+                </div>
             </div>
         </div>
     </div>

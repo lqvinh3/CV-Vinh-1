@@ -11,7 +11,7 @@ const fs = require('fs');
  *    -> Khi bấm In/Tải về với các trang đã chọn xóa, server chỉ cần load từ fullPdfCache và cắt trang trong ~15ms!
  */
 const renderCache = {
-  cover: { mtime: 0, buffer: null },
+  cover: {}, // key: `${lang}` -> { mtime: 0, buffer: null }
   cv: {} // key: `${filename}_${lang}` -> { mtime: 0, buffer: null }
 };
 
@@ -54,10 +54,11 @@ function getBrowserExecutablePath() {
 /**
  * Lấy buffer PDF của Cover Letter (có cache theo mtime của file)
  */
-async function getCoverLetterPdf(browser, coverLetterPath, baseUrl) {
+async function getCoverLetterPdf(browser, coverLetterPath, lang = 'vi', baseUrl) {
   const stat = fs.statSync(coverLetterPath);
-  if (renderCache.cover.buffer && renderCache.cover.mtime === stat.mtimeMs) {
-    return renderCache.cover.buffer;
+  const cacheKey = lang || 'vi';
+  if (renderCache.cover[cacheKey] && renderCache.cover[cacheKey].mtime === stat.mtimeMs) {
+    return renderCache.cover[cacheKey].buffer;
   }
 
   const coverPage = await browser.newPage();
@@ -65,6 +66,16 @@ async function getCoverLetterPdf(browser, coverLetterPath, baseUrl) {
     await coverPage.setViewport({ width: 1200, height: 1600, deviceScaleFactor: 2 });
     const coverUrl = `${baseUrl}/client/cover-letter.html`;
     await coverPage.goto(coverUrl, { waitUntil: 'networkidle0', timeout: 30000 });
+
+    if (lang) {
+      await coverPage.evaluate((targetLang) => {
+        if (typeof STATE !== 'undefined' && typeof toggleLanguage === 'function') {
+          if (STATE.current !== targetLang) {
+            toggleLanguage();
+          }
+        }
+      }, lang);
+    }
 
     await coverPage.addStyleTag({
       content: `
@@ -107,8 +118,10 @@ async function getCoverLetterPdf(browser, coverLetterPath, baseUrl) {
       margin: { top: '15mm', bottom: '15mm', left: '20mm', right: '20mm' }
     });
 
-    renderCache.cover.mtime = stat.mtimeMs;
-    renderCache.cover.buffer = buffer;
+    renderCache.cover[cacheKey] = {
+      mtime: stat.mtimeMs,
+      buffer: buffer
+    };
     return buffer;
   } finally {
     await coverPage.close();
@@ -214,11 +227,11 @@ async function getFullMergedPdf({ cvFileName, lang = 'vi', baseUrl = 'http://loc
   }
 
   // Nếu chưa có hoặc file nguồn bị sửa, render lại các thành phần cần thiết
-  const needCoverRender = !renderCache.cover.buffer || renderCache.cover.mtime !== coverStat.mtimeMs;
+  const needCoverRender = !renderCache.cover?.[lang] || renderCache.cover[lang].mtime !== coverStat.mtimeMs;
   const cvCacheKey = `${safeCvName}_${lang}`;
   const needCvRender = !renderCache.cv[cvCacheKey] || renderCache.cv[cvCacheKey].mtime !== cvStat.mtimeMs;
 
-  let coverPdfBytes = renderCache.cover.buffer;
+  let coverPdfBytes = renderCache.cover?.[lang]?.buffer;
   let cvPdfBytes = renderCache.cv[cvCacheKey]?.buffer;
 
   if (needCoverRender || needCvRender) {
@@ -236,7 +249,7 @@ async function getFullMergedPdf({ cvFileName, lang = 'vi', baseUrl = 'http://loc
 
     try {
       if (needCoverRender) {
-        coverPdfBytes = await getCoverLetterPdf(browser, coverLetterPath, baseUrl);
+        coverPdfBytes = await getCoverLetterPdf(browser, coverLetterPath, lang, baseUrl);
       }
       if (needCvRender) {
         cvPdfBytes = await getCvPdf(browser, cvPath, safeCvName, lang, baseUrl);
@@ -329,7 +342,7 @@ async function generateMergedPdf({ cvFileName, lang = 'vi', baseUrl = 'http://lo
  * Xóa cache nếu cần force refresh
  */
 function clearRenderCache() {
-  renderCache.cover = { mtime: 0, buffer: null };
+  renderCache.cover = {};
   renderCache.cv = {};
   for (const k in fullPdfCache) delete fullPdfCache[k];
 }
