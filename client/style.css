@@ -247,6 +247,8 @@
      position: relative;
      padding-left: 20px;
      margin-bottom: 4px;
+    break-inside: avoid;
+    page-break-inside: avoid;
  }
 
  .exp-bullets li::before {

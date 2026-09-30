@@ -81,33 +81,53 @@ async function getCoverLetterPdf(browser, coverLetterPath, lang = 'vi', baseUrl)
       content: `
         @page {
           size: A4 portrait;
-          margin: 15mm 20mm 15mm 20mm;
+          margin: 12mm 18mm 12mm 18mm;
         }
         body {
           background-color: #ffffff !important;
           padding: 0 !important;
           margin: 0 !important;
           display: block !important;
-          font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+          font-family: 'Roboto', Arial, 'Segoe UI', sans-serif !important;
           color: #1e293b !important;
         }
         .lang-toggle-container {
           display: none !important;
         }
         .cover-letter-title h2 {
-          font-size: 26px !important;
+          font-size: 24px !important;
           font-weight: 700 !important;
           color: #0f172a !important;
           letter-spacing: 2px !important;
-          margin-top: 10px !important;
-          margin-bottom: 25px !important;
-          padding-bottom: 12px !important;
+          margin-top: 5px !important;
+          margin-bottom: 18px !important;
+          padding-bottom: 10px !important;
           border-bottom: 2px solid #2563eb !important;
         }
-        .cover-letter-text {
-          font-size: 16.5px !important;
-          line-height: 30px !important;
+        .cover-letter-text, .cover-letter-text p, .cover-letter-text li, .lang-vi, .lang-en {
+          font-family: 'Roboto', Arial, 'Segoe UI', sans-serif !important;
+          font-size: 13.5px !important;
+          line-height: 22px !important;
           color: #262626 !important;
+        }
+        .cover-letter-text p {
+          margin: 0 0 9px 0 !important;
+          text-align: justify !important;
+        }
+        .cover-letter-text ul.project-list {
+          margin: 4px 0 10px 0 !important;
+          padding-left: 20px !important;
+        }
+        .cover-letter-text ul.project-list li {
+          margin-bottom: 4px !important;
+          line-height: 20px !important;
+          text-align: left !important;
+        }
+        .cover-letter-contact {
+          margin-top: 15px !important;
+          font-family: 'Roboto', Arial, 'Segoe UI', sans-serif !important;
+          font-size: 13.5px !important;
+          line-height: 22px !important;
         }
       `
     });
@@ -115,7 +135,7 @@ async function getCoverLetterPdf(browser, coverLetterPath, lang = 'vi', baseUrl)
     const buffer = await coverPage.pdf({
       format: 'A4',
       printBackground: true,
-      margin: { top: '15mm', bottom: '15mm', left: '20mm', right: '20mm' }
+      margin: { top: '12mm', bottom: '12mm', left: '18mm', right: '18mm' }
     });
 
     renderCache.cover[cacheKey] = {
@@ -172,6 +192,10 @@ async function getCvPdf(browser, cvPath, safeCvName, lang, baseUrl) {
           box-shadow: none !important;
           margin: 0 auto !important;
           width: 210mm !important;
+        }
+        .exp-bullets li, .skills-grid li {
+          break-inside: avoid !important;
+          page-break-inside: avoid !important;
         }
       `
     });
